@@ -149,7 +149,37 @@ int main()
              }
              printf("\\n\nAverage waiting time= %f sec\n",waiting*1.0/a);
              pritf("\n Average turnaround time=%f sec\n",turn*1.0/a);
-             printf("------------------------------------------------------")
+             printf("------------------------------------------------------");
+             
+             printf("\n\nWELCOME TO QUEUE 2... LETS DO PRIORITY QUEUE SCHEDULING...\n\n");
+             int wtime[n],ttime[n];
+             int avg_wt,avg_tat,total=0;
+             wtime[a]=0;
+             for(i=a+1;i<b+a;i++)
+             {
+               wtime[i]=0;
+               for(j=a;j<i;j++)
+                 wtime[i]=wtime[i]+bt[i];
+               total=total+wtime[i];
+             }
+             avg_wt=total*1.0/b;
+             total=0;
+             printf("\nProcess\t\tBurst Time\tWaiting Time\tTurnaround Time");
+             for(i=a;i<b+a;i++)
+             {
+               ttime[i]=bt[i]+wtime[i];
+               total=total+wtime[i];
+               printf("\nP%d\t\t%d\t\t%d\t\t%d",i+1,bt[i],wtime[i],ttime[i]);
+             }
+             avg_tat=total/b;
+             printf("\n\nAverage waiting time= "%f sec\n",avg_wt*1.0);
+             printf("\n Average turnaround time=%f sec\n",avg_tat*1.0);
+                    
+             printf("\n\n-------------------------------------------\n\n");
+             
+               
+               
+             }
            
            
 }
